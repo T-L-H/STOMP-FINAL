@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2 id="test">Connect to your shoes and then start STOMP'N to start!</h2>
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+
+<div class="music_player">
+  <div class="artist_img">
+  <img src="https://mediad.publicbroadcasting.net/p/kmuw/files/styles/large/public/201701/music.jpg" id="img">
+  </div>
+  <div class="time_slider">
+    <h3>SONG</h3>
+  </div>
+  <div class="now_playing">
+    <i class="fa fa-refresh" aria-hidden="true"></i>
+
+    <!-- <p id="playing"> now playing </p> -->
+    <i class="fa fa-heart" aria-hidden="true"></i>
+  </div>
+  <div class="music_info">
+    <h2 id="artist">ARTIST</h2>
+    
+    <p class="song_title" id="playing">TITLE</p>
+    
+  </div>
+  <div class="controllers">
+    <h3>ARTIST</h3>
+  </div>
+</div> 
+<div class="song_list">
+  <div class="title dark" onclick="theSong('Party Rock', 'LMFAO')" id="Party Rock"><div class="cursor">Party Rock</div></div>
+  <div class="title dark" id="Party Rock2">LMFAO</div>
+  <div class="title dark" onclick="theSong('Cotton Eye Joe', 'Rednex')" id="Cotton Eye Joe"><div class="cursor">Cotton Eye Joe</div></div>
+  <div class="title dark" id="Cotton Eye Joe2">Rednex</div>
+  <div class="title dark" onclick="theSong('Feel This Moment', 'Pitbull')" id="Feel This Moment"><div class="cursor">Feel This Moment</div></div>
+  <div class="title dark" id="Feel This Moment2">Pitbull</div>
+  <div class="title dark" onclick="theSong('Just Dance', 'Lady Gaga')" id="Just Dance"><div class="cursor">Just Dance</div></div>
+  <div class="title dark" id="Just Dance2">Lady Gaga</div>
+  <div class="title dark" onclick="theSong('Let It Go', 'Idina Menzel')" id="Let It Go"><div class="cursor">Let It Go</div></div>
+  <div class="title dark" id="Let It Go2">Idina Menzel</div>
+  <div class="title dark" onclick="theSong('Starships', 'Nicki Minaj')" id="Starships"><div class="cursor">Starships</div></div>
+  <div class="title dark" id="Starships2">Nicki Minaj</div>
+  <div class="title dark" onclick="theSong('Timber', 'Pitbull')" id="Timber"><div class="cursor">Timber</div></div>
+  <div class="title dark" id="Timber2">Pitbull</div>
+  <div class="title dark" onclick="theSong('Wake Me Up', 'Avicii')" id="Wake Me Up"><div class="cursor">Wake Me Up</div></div>
+  <div class="title dark" id="Wake Me Up2">Avicii</div>
+  <div class="title dark" onclick="theSong('Hello Seattle - Remix', 'Owl City')" id="Hello Seattle - Remix"><div class="cursor">Hello Seattle - Remix</div></div>
+  <div class="title dark" id="Hello Seattle - Remix2">Owl City</div>
+  </div>
+  <input type="text" id="playing2">
+</body>
+<style>
+    @import url(//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css);
+    h3{text-align: center; color: red;}
+    #playing2{
+    width: 0.5px;
+    height: 0.5px;
+    border-color: transparent;
+    position: absolute;
+  bottom: 5px;
+  right: 10px;
+}
+.cursor{
+    cursor: pointer;
+}
+    
+    #test{
+        text-align: center;
+        color: red;
+    }
+body {
+  font-family: 'Josefin Sans', sans-serif !important;
+  margin: 5rem 0 5rem 0;
+  background: #3C2053;
+  font-family: tahoma;
+}
+body .music_player {
+  position: relative;
+  margin: 0 auto;
+  background: #402457;
+  height: 14rem;
+  width: 40rem;
+  -webkit-box-shadow: 10px 0px 20px -6px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 10px 7px 20px -6px rgba(0, 0, 0, 0.75);
+  box-shadow: 10px 0px 20px -6px rgba(0, 0, 0, 0.75);
+}
+body .music_player .artist_img img {
+  width: 298px;
+}
+body .music_player .time_slider {
+  background: #301643;
+  height: 2.5rem;
+  width: 18.7rem;
+  position: absolute;
+  bottom: 0;
+}
+body .music_player .time_slider span {
+  position: absolute;
+  font-size: 12px;
+  top: 0.75rem;
+}
+body .music_player .time_slider .runing_time {
+  left: 1rem;
+  color: #FECF7D;
+}
+body .music_player .time_slider .song_long {
+  right: 1rem;
+  color: #775B8E;
+}
+body .music_player .controllers {
+  background: #260F39;
+  height: 2.5rem;
+  width: 21.4rem;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  
+  text-align: center;
+  color: #83649F;
+}
+body .music_player .controllers i {
+  position: relative;
+  bottom: -0.7rem;
+  padding: 0 15px 0 15px;
+}
+body .music_player .now_playing {
+  top: 0;
+  right: 0;
+  height: 2.5rem;
+  width: 21.4rem;
+  position: absolute;
+  background: #260F39;
+  text-align: center;
+  color: #9073A9;
+}
+body .music_player .now_playing i.fa-heart {
+  top: 0.5rem;
+  right: 4rem;
+  position: absolute;
+}
+body .music_player .now_playing i.fa-refresh {
+  top: 0.5rem;
+  left: 4rem;
+  position: absolute;
+}
+body .music_player .now_playing p {
+  text-transform: uppercase;
+  font-size: 12px;
+}
+body .music_info {
+  top: 2rem;
+  right: 0;
+  position: absolute;
+  width: 21rem;
+}
+body .music_info h2 {
+  color: #fff;
+  text-align: center;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+body .music_info p {
+  text-align: center;
+}
+body .music_info .date {
+  color: #A384BD;
+  font-weight: bold;
+  font-size: 13px;
+  margin-top: -0.8em;
+}
+body .music_info .song_title {
+  color: #E7DF70;
+}
+input[type=range] {
+  -webkit-appearance: none;
+  border: 1px solid white;
+  border-radius: 2px;
+  width: 12rem;
+  top: 1rem;
+  left: 0;
+  right: 0;
+  margin: auto;
+  position: absolute;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  width: 300px;
+  height: 5px;
+  background: #8664A1;
+  border: none;
+  border-radius: 3px;
+}
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: 3px solid #fff;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: #9200FF;
+  margin-top: -4px;
+}
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #8664A1;
+}
+input[type=range]::-moz-range-track {
+  width: 300px;
+  height: 5px;
+  background: #8664A1;
+  border: none;
+  border-radius: 3px;
+}
+input[type=range]::-moz-range-thumb {
+  -webkit-appearance: none;
+  border: 3px solid #fff;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: #9200FF;
+  margin-top: -4px;
+}
+input[type=range]:-moz-focusring {
+  outline: 1px solid white;
+  outline-offset: -1px;
+}
+input[type=range]::-ms-track {
+  width: 300px;
+  height: 5px;
+  background: transparent;
+  border-color: transparent;
+  border-width: 6px 0;
+  color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+  background: #777;
+  border-radius: 10px;
+}
+input[type=range]::-ms-fill-upper {
+  background: #ddd;
+  border-radius: 10px;
+}
+input[type=range]::-ms-thumb {
+  border: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: goldenrod;
+}
+input[type=range]:focus::-ms-fill-lower {
+  background: #888;
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: #ccc;
+}
+fieldset {
+  margin: auto;
+  left: 0;
+  right: 0;
+  position: absolute;
+  width: 9rem;
+}
+/****** Style Star Rating Widget *****/
+.rating {
+  border: none;
+  float: left;
+}
+.rating > input {
+  display: none;
+}
+.rating > label:before {
+  margin: 5px;
+  font-size: 1.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+.rating > .half:before {
+  content: "\f089";
+  position: absolute;
+}
+.rating > label {
+  color: #ddd;
+  float: right;
+}
+.rating > input:checked ~ label, .rating:not(:checked) > label:hover, .rating:not(:checked) > label:hover ~ label {
+  /* show gold star when clicked */
+  /* hover current star */
+  color: #FFD700;
+}
+.rating > input:checked + label:hover, .rating > input:checked ~ label:hover, .rating > label:hover ~ input:checked ~ label, .rating > input:checked ~ label:hover ~ label {
+  color: #FFED85;
+}
+i {
+  cursor: pointer;
+}
+i:hover {
+  color: #FEC35E;
+}
+.song_list {
+  background: #402457;
+  position: absloute;
+  margin: 0 auto;
+  width: 40rem;
+  height: 7rem;
+  font-size: 20px;
+  color: #fff;
+  overflow-y: scroll;
+  -webkit-box-shadow: 10px 7px 20px -6px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 10px 7px 20px -6px rgba(0, 0, 0, 0.75);
+  box-shadow: 10px 7px 20px -6px rgba(0, 0, 0, 0.75);
+}
+.song_list .title {
+  width: 48%;
+  text-align: center;
+  float: left;
+  padding: 2px 0 2px 0;
+}
+.dark {
+  background: #260F39;
+}
+
+</style>
+<script>
+ var i2 = 0;
+      
+      function theSong(name, artist) {
+        document.getElementById('playing').innerHTML = name;
+        document.getElementById('artist').innerHTML = artist;
+        
+
+        i2 = 0;
+        
+        document.getElementById("playing2").focus();
+        document.getElementById(name).className = "title";
+        document.getElementById(name + "2").className = "title";
+        if(name != "Party Rock"){
+            document.getElementById("Party Rock").className = "title dark";
+        document.getElementById("Party Rock2").className = "title dark";
+        }
+        if(name != "Cotton Eye Joe"){
+            document.getElementById("Cotton Eye Joe").className = "title dark";
+        document.getElementById("Cotton Eye Joe2").className = "title dark";
+        }
+        if(name != "Feel This Moment"){
+            document.getElementById("Feel This Moment").className = "title dark";
+        document.getElementById("Feel This Moment2").className = "title dark";
+        }
+        if(name != "Just Dance"){
+            document.getElementById("Just Dance").className = "title dark";
+        document.getElementById("Just Dance2").className = "title dark";
+        }
+        if(name != "Let It Go"){
+            document.getElementById("Let It Go").className = "title dark";
+        document.getElementById("Let It Go2").className = "title dark";
+        }
+        if(name != "Starships"){
+            document.getElementById("Starships").className = "title dark";
+        document.getElementById("Starships2").className = "title dark";
+        }
+        if(name != "Timber"){
+            document.getElementById("Timber").className = "title dark";
+        document.getElementById("Timber2").className = "title dark";
+        }
+        if(name != "Wake Me Up"){
+            document.getElementById("Wake Me Up").className = "title dark";
+        document.getElementById("Wake Me Up2").className = "title dark";
+        }
+        if(name != "Hello Seattle - Remix"){
+            document.getElementById("Hello Seattle - Remix").className = "title dark";
+        document.getElementById("Hello Seattle - Remix2").className = "title dark";
+        }
+        if(name === "Party Rock"){
+            document.getElementById("img").src = "https://edm.com/.image/ar_4:3%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1200/MTYyNjQ4NjM0NzI1MjQ1OTky/party-rock.jpg";
+        }
+        if(name === "Cotton Eye Joe"){
+            document.getElementById("img").src = "https://www.nme.com/wp-content/uploads/2016/09/84_Renex_L090507.jpg";
+        }
+        if(name === "Just Dance"){
+            document.getElementById("img").src = "https://static.billboard.com/files/2021/02/lady-gaga-grammy-02-billboard-1548-1614267788-compressed.jpg";
+        }
+        if(name === "Let It Go"){
+            document.getElementById("img").src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXB_1nm2rKvygqsHZMT9phwWjcBRspylyHGk3fkv2tD0LZafsmn_xyZMAugCElh7H3eMk&usqp=CAU";
+        }
+        if(name === "Starships"){
+            document.getElementById("img").src = "https://www.oxygen.com/sites/oxygen/files/field_blog_image/2017/09/nicki_m_vmas.jpg";
+        }
+        if(name === "Wake Me Up"){
+            document.getElementById("img").src = "https://static.billboard.com/files/2020/05/avicii-press-photo-cr-sean-erikkson-billboard-1548-1590528360-compressed.jpg";
+        }
+        if(name === "Hello Seattle - Remix"){
+            document.getElementById("img").src = "https://www.buenamusica.com/media/fotos/cantantes/biografia/owl-city.jpg";
+        }
+        if(name === "Feel This Moment" || name === "Timber"){
+            document.getElementById("img").src = "https://direct.rhapsody.com/imageserver/images/Art.6375330/356x237.jpg";
+        }
+        
+
+
+
+
+      }
+      
+  
+      
+   
+  
+      
+      var i = 0;
+      
+  
+      var heyo = localStorage.getItem('NUMBER');
+  
+      i = heyo;
+      
+  
+     
+  
+      document.addEventListener('keydown', function (e) {
+        if (e.keyCode == 13) {
+          var audio = document.createElement('audio');
+      var name = document.getElementById('playing').innerHTML;
+      audio.src = name + '.mp3';
+      audio.currentTime = i2;
+     
+          audio.addEventListener(
+            'canplaythrough',
+            function () {
+              audio.play()
+          
+              
+  
+              setTimeout(function () {
+                audio.pause()
+              }, 1000)
+            },
+            false,
+          )
+          document.getElementById('test').innerHTML = "Your Steps: "+ ++i;
+          ++i2;
+          localStorage.setItem('NUMBER', i);
+        
+        }
+      })
+</script>
+</html>
